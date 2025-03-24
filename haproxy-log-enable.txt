@@ -1,0 +1,34 @@
+https://www.digitalocean.com/community/tutorials/how-to-configure-haproxy-logging-with-rsyslog-on-centos-8-quickstart
+https://velaninfo.com/rs/techtips/how-to-configure-haproxy-logging-on-centos/
+
+
+
+
+
+vim /etc/haproxy/haproxy.cfg
+
+
+add below line under the # comment log : 
+
+#log         127.0.0.1 local2
+log         /dev/log local0
+
+
+The next step is to create the dev directory in /var/lib/haproxy
+
+                # mkdir /var/lib/haproxy/dev
+
+                # systemctl restart haproxy.service
+
+Then 
+
+vim /etc/rsyslog.d/99-haproxy.conf
+$AddUnixListenSocket /var/lib/haproxy/dev/log
+
+# Send HAProxy messages to a dedicated logfile
+:programname, startswith, "haproxy" {
+  /var/log/haproxy.log
+  stop
+}
+
+systemctl restart rsyslog

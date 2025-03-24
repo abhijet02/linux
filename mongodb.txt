@@ -1,0 +1,114 @@
+https://medium.com/@yasiru.13/mongodb-setting-up-an-admin-and-login-as-admin-856ea6856faf
+
+https://www.bmc.com/blogs/mongodb-role-based-access-control/
+
+>db.createUser(
+  {
+    user: "admin",
+    pwd: "password",
+    roles: [ { role: "root", db: "admin" } ]
+  }
+);
+
+
+--------------------mongo-admin---------------
+db.createUser(
+{	user: "bracits",
+	pwd: "mongo321",
+
+	roles:[{role: "userAdminAnyDatabase" , db:"admin"}]
+	}
+);
+
+
+db.createUser(
+{	user: "bits",
+	pwd: "mongo123",
+
+	roles:[{role: "root" , db:"test"}]
+	}
+);
+-----------------db login---------------
+
+# mongo -u hasib -p "123456" localhost/my_db
+
+>use admin
+>db.auth('admin','password');
+
+
+
+use admin
+db.createUser(
+  {
+    user: "reportsUser",
+    pwd: passwordPrompt(),  // or cleartext password
+    roles: [
+       { role: "userAdminAnyDatabase", db: "admin" },
+       { role: "userAdminAnyDatabase", db: "uat1" },
+       { role: "userAdminAnyDatabase", db: "uat2" },
+       { role: "userAdminAnyDatabase", db: "training" }
+    ]
+  }
+)
+
+
+
+-------obidul bhai ------
+
+> use uat1
+switched to db uat1
+> db.user.insert({name: "Ada Lovelace", age: 205})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin  0.004GB
+local  0.000GB
+test   0.005GB
+uat1   0.000GB
+> use uat2
+switched to db uat2
+> db.user.insert({name: "Ada Lovelace", age: 205})
+WriteResult({ "nInserted" : 1 })
+> use training
+switched to db training
+> db.user.insert({name: "Ada Lovelace", age: 205})
+WriteResult({ "nInserted" : 1 })
+> show dbs
+admin     0.004GB
+local     0.000GB
+test      0.005GB
+training  0.000GB
+uat1      0.000GB
+uat2      0.000GB
+
+use admin
+db.createUser(
+  {
+    user: "erpuser",
+    pwd: "erp@123",  // or cleartext password
+    roles: [
+       { role: "readWrite", db: "admin" },
+       { role: "readWrite", db: "uat1" },
+       { role: "readWrite", db: "uat2" },
+       { role: "readWrite", db: "training" }
+    ]
+  }
+)
+
+mongodb://erpuser2:erp123@10.140.0.228/admin
+
+
+-> db.createCollection("mycol")
+
+-> db.mycol.insert([
+	{
+		title: "MongoDB",
+		description: "MongoDB is no SQL database"
+	}
+	
+])
+
+
+
+
+
+db.createUser({user: "saroj_1602", pwd: "Thashy%72", roles: [{role: "read", db: "admin"}]})

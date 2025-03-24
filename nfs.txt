@@ -1,0 +1,39 @@
+https://www.tecmint.com/how-to-setup-nfs-server-in-linux/
+https://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-setup-nfs-server-on-centos-7-rhel-7-fedora-22.html
+
+yum install nfs-utils nfs-utils-lib  { both PC}
+systemctl start nfs-server rpcbind
+systemctl enable nfs-server rpcbind
+
+
+vim /etc/exports    { share server}
+
+/var/www/html/node2       10.140.15.0/24(rw,sync,no_root_squash,no_all_squash)
+{share server location}   {client location}
+
+
+vim /etc/fstab {client server})
+
+10.140.0.216:/var/www/html/node4/ /data/backup/pgbedger/html/ nfs rw,sync,hard,intr 0 0
+{share server address}                  {client location}
+
+
+
+exportfs { share server}
+
+exportfs -r { share server server}
+
+
+mount -a {client server}
+
+df -hT
+
+
+
+-----------------------
+mount
+umount -f
+
+------
+rw=read/write
+ro=read only

@@ -1,0 +1,7 @@
+mercure.enable=true
+mercure.secretKey='dnflehfieneriw09895n4er8'
+mercure.url.subscriber='http://10.42.53.152:3000/.well-known/mercure'
+mercure.url.publisher='http://10.42.53.152:3000/.well-known/mercure'
+mercure.js.dialogLifeTime=10000
+queue.producer.url= "http://10.42.53.152:9099/cloud-stream-producer/request-queue/add-request/day-open-initiate"
+loadbalancer.server.url="http://10.42.53.130:7099"

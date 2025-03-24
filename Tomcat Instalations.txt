@@ -1,0 +1,36 @@
+1. Copy from 10.42.65.59_War Release
+2. Create /bits folder
+3. then create /bits/sbicloud folder
+4. unzip the file by using 
+  # tar -xvf apache-tomcat-8.0.9.tar.gz 
+5. link
+ ln -s apache-tomcat-8.0.9 >> tomcat 8080
+
+
+6. <Server port="8005" shutdown="SHUTDOWN">
+
+7. <Connector port="8080" protocol="HTTP/1.1" ----------- <connector port = Browser port>
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+8. <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+
+
+note : 1 tomcat have 4 different port
+if many tomcat need to configure in on server then all port should changed.
+
+----------------------------------------------------
+Memory 
+
+./bin/cataline.sh
+
+
+JAVA_HOME="/bits/java"
+JAVA_OPTS="-Xms2G -Xmx12G -XX:PermSize=512m -XX:MaxPermSize=1G -Xss2m"
+CATALINA_OPTS="-server -Xms2G -Xmx12G -XX:PermSize=512m -XX:MaxPermSize=720m -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:NewSize=1G -XX:+UseParNewGC"
+
+# OS specific support.  $var _must_ be set to either true or false.
+---------------------------------------------------
+JAVA_HOME="/bits/jdk/java"
+
+CATALINA_OPTS="-server -Xms4G -Xmx20G -XX:PermSize=4G -XX:MaxPermSize=4G -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:NewSize=2G -XX:+UseParNewGC"

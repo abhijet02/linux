@@ -1,0 +1,55 @@
+
+VM Migration after task :
+
+systemctl disable --now telegraf
+
+su - enterprisedb
+rm -rf ./ssh
+
+
+then
+
+/data/edb/as11/data/
+
+rm -rf recovery.conf
+
+
+
+vim postgresql.conf
+
+shared_buffers = 40 % RAM
+
+effective_cache_size = 45 % RAM
+
+archive_mode = off 
+
+## to archive_command
+## to synchronous_standby_names =
+
+
+
+
+content clear to 
+
+vim postgresql.auto.conf
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+if need password change then ...follow below steps
+
+vim pg_hba.conf
+
+local   all             all                                    md5
+change to 
+local   all             all                                    trust
+
+reload edb service..
+
+su - enterprisedb
+# psql -p 4550 -d edb
+psql> ALTER USER enterprisedb WITH PASSWORD '#HsdyCd63893Gsd#';
+
+
+if need password change then 

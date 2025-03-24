@@ -1,0 +1,35 @@
+sudo gitlab-ctl status 
+
+sudo gitlab-rake gitlab:env:info
+
+
+gitlab-psql --version
+
+
+
+Monitor logs:
+
+$ tail -f /var/log/gitlab/gitlab-rails/production.log /var/log/gitlab/postgresql/current
+
+
+
+https://gitlab-backup.bracits.com/help
+
+
+
+sudo gitlab-ctl pg-upgrade -V 14
+
+
+
+
+
+https://pipo.blog/articles/20210901-gitlab-postgresql-recovery
+
+------------------------
+https://docs.gitlab.com/ee/update/package/
+
+yum --showduplicates list gitlab-ee
+
+yum install gitlab-ee-16.7.0-ee.0.el7
+
+-------------

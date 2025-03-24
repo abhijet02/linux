@@ -1,0 +1,50 @@
+##### Check when last yum update ran #####
+yum history
+
+or
+
+yum history | grep update
+
+-----------------------------------------------
+
+##### Skip errors #####
+
+yum update --skip-broken
+
+
+-----------------------------------------------
+
+##### Update all but one package #####
+
+yum update --exclude=kernel*
+or
+yum update -x 'kernel*'
+
+##### Exclude multiple packages #####
+
+yum update --exclude=kernel* --exclude=httpd
+
+
+##### Rollback (revert) update #####
+
+yum history undo 7
+
+
+https://likegeeks.com/yum-update-command/
+
+https://www.cyberciti.biz/faq/yum-history-command/
+
+
+#################################################
+-------------------------------------------------
+https://command-not-found.com/needs-restarting
+
+ Ubuntu
+apt-get install yum-utils
+ CentOS
+yum install yum-utils
+ Dockerfile
+ dockerfile.run/needs-restarting
+
+needs-restarting  -r
+

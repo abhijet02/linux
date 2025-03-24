@@ -1,0 +1,51 @@
+sudo groupadd gitsec
+
+sudo usermod -aG gitsec user1
+sudo usermod -aG gitsec user2
+sudo usermod -aG gitsec user3
+
+
+s
+
+---------------
+sudo mkdir /home/gitsec
+
+
+---------------
+
+sudo chown gitsec: /home/gitsec
+sudo chmod 750 /home/gitsec
+
+# Set ACLs to give read-only access to the directory for the gitsec group
+sudo setfacl -m g:gitsec:rx /home/gitsec
+
+
+
+
+
+---------------
+
+sudo vim /etc/ssh/sshd_config
+
+
+---------------
+
+Add the following lines to the SSH configuration file to specify the chroot directory:
+Find the Subsystem sftp line and add the following lines below it
+
+Match Group gitsec
+ChrootDirectory /home/gitsec/%u
+AllowTCPForwarding no
+PasswordAuthentication yes
+PermitRootLogin no
+
+---------------
+sudo systemctl restart ssh
+---------------
+sudo usermod -aG passwd user1
+sudo usermod -aG passwd user2
+sudo usermod -aG passwd user3
+
+---------------
+
+in below scripts sudo usermod -aG passwd user1 not working. passed group not found...and users cant also login to OS..its not working...

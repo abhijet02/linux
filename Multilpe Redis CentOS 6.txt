@@ -1,0 +1,22 @@
+
+#cp /etc/redis.conf /etc/redis-6380.conf && chown redis /etc/redis-6380.conf
+#vim /etc/redis-6380.conf
+	pidfile /var/run/redis/redis-6380.pid
+	dir /var/lib/redis-6380/
+	port 6380
+	logfile /var/log/redis/redis-6380.log
+#make dir /var/lib/redis-6380 
+#cp /etc/init.d/redis /etc/init.d/redis-6380 && chown redis /etc/init.d/redis-6380
+#vim /etc/init.d/redis-6380
+	pidfile="/var/run/redis/redis-6380.pid"
+	REDIS_CONFIG="/etc/redis-6380.conf"
+service redis-6380 start && service redis-6380 status && chkconfig redis-6380 on
+
+
+
+
+
+
+
+/etc/init.d/redis stop
+chkconfig redis off

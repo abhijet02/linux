@@ -1,0 +1,13 @@
+https://cloud.google.com/compute/docs/disks/add-persistent-disk
+
+yum install cloud-utils-growpart
+
+
+growpart /dev/sdb 1
+
+xfs_growfs -d /dev/sdb1
+
+
+-------------------------
+
+resize2fs /dev/sdb1

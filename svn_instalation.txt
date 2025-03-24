@@ -1,0 +1,24 @@
+
+https://www.vultr.com/docs/how-to-setup-an-apache-subversion-svn-server-on-centos-7/
+
+
+https://tecadmin.net/how-to-svn-subversion-dump-and-restore/
+
+
+
+usis_adm
+sVn@134/.,l222
+
+
+usis_svn
+sVn@134/.,l53466
+
+sazzad
+gnjgh3565,./,,
+
+
+note : repol must add
+
+https://www.digitalocean.com/community/questions/forbidden-you-don-t-have-permissions-to-access-on-this-server
+for svn entry
+

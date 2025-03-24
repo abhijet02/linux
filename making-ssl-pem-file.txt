@@ -1,0 +1,10 @@
+https://knowledge.digicert.com/tutorials/create-pem-file-for-tls-ssl-certificate-installations
+
+
+Open a text editor (such as Notepad) and paste the entire body of each certificate into one text file in the following order:
+The Private Key - your_domain_name.key
+The Primary Certificate - your_domain_name.crt
+The Intermediate Certificate - DigiCertCA.crt
+The Root Certificate - TrustedRoot.crt
+
+

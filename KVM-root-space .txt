@@ -1,0 +1,47 @@
+https://www.teknophiles.com/2018/12/09/resizing-the-linux-root-partition-in-a-gen2-hyper-v-vm/
+
+------------------------------
+------------------------------
+
+
+qemu-img resize /var/lib/libvirt/images/DB-Node03.qcow2 +2TB
+
+------
+echo 1 > /sys/block/sda/device/rescan
+-------
+parted
+p
+
+( parted /dev/vda
+total disk size :  will be end size
+if need then type fix)
+
+resizepart
+lsblk
+pvresize /dev/sda3
+
+df -hT
+lvextend -l +100%FREE -r /dev/mapper/centos-root
+
+
+
+
+
+--------------
+-------------
+
+yum -y install cloud-utils-growpart
+
+
+growpart /dev/vda 3
+
+pvresize /dev/vda3
+
+
+df -hT | grep mapper
+
+lvextend -r -l +100%FREE /dev/mapper/centos-root
+
+
+
+https://computingforgeeks.com/extending-root-filesystem-using-lvm-linux/

@@ -1,0 +1,15 @@
+https://www.cyberciti.biz/tips/fdisk-unable-to-create-partition-greater-2tb.html
+
+
+parted /dev/sdb
+mklabel gpt
+unit TB
+mkpart primary 0.00TB 10.00TB
+lsof /dev/sdb1
+cat /proc/mdstat
+systemctl status multipathd.service
+mkfs.ext3 /dev/sdb1
+
+
+
+

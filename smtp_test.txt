@@ -1,0 +1,21 @@
+sudo apt install netcat
+echo -e "EHLO localhost\nMAIL FROM:<awarnes@bracits.com>\nRCPT TO:<infra.support@bracits.com>\nDATA\nSubject: SMTP Test Email\n\nThis is a test email.\n.\nQUIT" | nc 10.42.54.42 25
+
+
+sudo apt install netcat -y
+echo -e "EHLO localhost\nMAIL FROM:<awarnes@bracits.com>\nRCPT TO:<infra.support@bracits.com>\nDATA\nSubject: SMTP Test Email\n\nThis is a test email.\n.\nQUIT" | nc 118.179.206.70 5471
+
+
+
+
+nc 10.42.54.42 25
+HELO bracits.com
+MAIL FROM:<awarnes@bracits.com>
+RCPT TO:<abhijeet.adhikary@bracits.com>
+DATA
+Subject: Test Email
+
+This is the body of the email.
+
+.
+QUIT

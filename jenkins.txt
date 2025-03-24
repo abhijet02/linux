@@ -1,0 +1,65 @@
+https://linuxize.com/post/how-to-install-jenkins-on-centos-7/
+
+
+
+yum install java-1.8.0-openjdk-devel
+
+curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+yum install jenkins -y
+
+
+systemctl start jenkins
+systemctl status jenkins
+systemctl enable jenkins
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+
+
+##################################################################
+##################################################################
+
+Installation of Maven
+
+https://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-install-apache-maven-on-debian-9-ubuntu-16-04-centos-7.html
+
+
+yum -y install wget
+wget http://mirrors.estointernet.in/apache/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.tar.gz
+
+tar -zxvf apache-maven-3.6.3-bin.tar.gz
+mv apache-maven-3.6.3 /opt/maven
+
+vi /etc/profile.d/maven.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/
+export M2_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+source /etc/profile.d/maven.sh
+
+mvn -version
+
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /opt/maven
+Java version: 1.8.0_232, vendor: Oracle Corporation, runtime: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.232.b09-0.el7_7.x86_64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "3.10.0-1062.9.1.el7.x86_64", arch: "amd64", family: "unix"
+---------------------------------------------------------------------
+##################################################################
+---------------------------------------------------------------------
+
+Installation of Git
+
+yum -y install git
+git –version
+
+---------------------------------------------------------------------
+##################################################################
+---------------------------------------------------------------------
+https://developpaper.com/building-jenkins-maven-git-continuous-integration-environment-on-centos-7/

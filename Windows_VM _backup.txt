@@ -1,0 +1,7 @@
+$ExportPath = "D:\bk"
+Start-Sleep -s 10
+GET-VM | where {$_.state -eq ‘running’} | Export-VM -Path $ExportPath
+
+
+
+https://www.robertborges.us/2014/07/virtualization/export-a-running-virtual-machine-using-powershell/

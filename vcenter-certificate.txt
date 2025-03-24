@@ -1,0 +1,27 @@
+
+
+https://www.dell.com/support/kbdoc/en-us/000208187/dell-vxrail-certificate-manager-tool-do-not-support-vcenter-ha-systems
+
+Resolution
+Run the below command:
+mkdir /var/tmp/vmware
+Run certificate-manager again.
+
+
+
+
+https://ilerpong.com/how-to-resolve-vcenter-server-appliance-7-x-expired-machine-ssl-certificate/
+
+Steps to resolving these issues.
+1.SSH into the vCenter Server appliance.
+
+2.To see the status certificate expiration date, use the command below.
+for i in $(/usr/lib/vmware-vmafd/bin/vecs-cli store list); do echo STORE $i; /usr/lib/vmware-vmafd/bin/vecs-cli entry list --store $i --text | egrep "Alias|Not After"; done
+
+/usr/lib/vmware-vmafd/bin/vmafd-cli get-pnid --server-name localhost
+
+
+
+https://ilerpong.com/how-to-resolve-vcenter-server-appliance-7-x-expired-machine-ssl-certificate/
+
+

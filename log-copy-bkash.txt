@@ -1,0 +1,5 @@
+docker logs collection-validation-api |grep 2021-09-19 > /tmp/2021-09-19.log
+docker logs collection-validation-api |grep 2021-09-19 >> /tmp/2021-09-19.log
+
+
+grep org.springframework.web.context.request.async.AsyncRequestTimeoutException /tmp/2021-09-19.log |wc -l

@@ -1,0 +1,18 @@
+virsh list --all
+  584  virsh shutdown DB_backup
+  585  virsh list --all
+  586  virsh snapshot-list DB_backup
+  587  virsh domblklist DB_backup
+  588  qemu-img info /var/lib/libvirt/images/db_backup.qcow2
+  589  qemu-img resize /var/lib/libvirt/images/db_backup.qcow2 +1024G
+  590  virsh start DB_backup
+  591  history
+  592  virsh snapshot-list DB_backup
+  593  virsh shutdown DB_backup
+  594  virsh list --all
+  595  qemu-img info /var/lib/libvirt/images/db_backup.qcow2
+  596  qemu-img resize /var/lib/libvirt/images/db_backup.qcow2 -512G
+  597  virsh start DB_backup
+  598  history
+  599  cd /var/lib/libvirt/images/
+  600  ls -lh

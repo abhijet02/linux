@@ -1,0 +1,29 @@
+vi /etc/issue.net
+____________________________________________________________
+                  Welcome to biTS
+	             +-+-+-+-+
+ 		     |b|i|T|S|
+ 		     +-+-+-+-+                 
+        All connections are monitored and recorded                                 
+  Dsconnect IMMEDIATELY if you are not an authorized user.
+------------------------------------------------------------
+
+                                    
+
+
+                                           
+                                           
+
+
+vi /etc/ssh/sshd_config
+   Banner /etc/issue.net
+
+   /etc/init.d/sshd restart
+systemctl restart sshd
+
+	10.42.65.28	10.42.65.61
+	10.42.65.40	
+10.42.65.52	52.66.13.94	10.42.65.68
+	13.232.153.53	10.42.54.10
+	13.235.36.140	10.42.65.131
+		10.42.65.132

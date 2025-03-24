@@ -1,0 +1,68 @@
+# mkdir /bits
+#cd /bits
+# mkdir sbicloud java
+# cp /tmp/jdk1.7.0_25.tar.gz jdk/                 [copy jdk to jdk/ directory]
+# cp /tmp/apache-tomcat-7.0.42.tar.gz sbicloud/   [copy apache-tomcat to sbicloud/ directory]
+
+==========================================
+# cd jdk/
+# tar -xvf jdk1.7.0_25.tar.gz                   [jdk file unzib]
+# ln -s jdk1.7.0_25 java		        [jdk file softlink to java]
+# vim /etc/profile			        [mentioned two line paste in /etc/profile last line]		
+
+JAVA_HOME=/bits/jdk/java		
+PATH=$PATH:$JAVA_HOME/bin
+:x
+
+# source /etc/profile
+# echo $JAVA_HOME
+
+==========================================
+# cd jdk/
+# tar -xvf apache-tomcat-7.0.42.tar.gz		[apache file unzib]
+# ln -s apache-tomcat-7.0.42 tomcat		[apache file softlink to tomcat]
+# cd tomcat/
+# vim conf/server.xml
+
+<Server port="8005" shutdown="SHUTDOWN">	[connector port different for different tomcat <8005>]
+
+
+<Connector port="80" protocol="HTTP/1.1"        [connector port different for different tomcat <80> ]
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+<Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />   [redirect port <8443>is same as previous redirect port<8443> butconnector port different for different tomcat. consider multiple tomcat in same server]
+
+:x
+
+# vim bin/catalina.sh
+
+# -----------------------------------------------------------------------------
+JAVA_HOME="/bits/jdk/java"
+JAVA_OPTS="-Xms2G -Xmx12G -XX:PermSize=512m -XX:MaxPermSize=1G -Xss2m"                   [the mentioned 3 line copy paste to this location]
+CATALINA_OPTS="-server -Xms2G -Xmx12G -XX:PermSize=512m -XX:MaxPermSize=720m -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:NewSize=1G -XX:+UseParNewGC"
+
+# OS specific support.  $var _must_ be set to either true or false.             
+
+:x
+
+
+# vim lib/sbicloud-config.groovy      [edit groovy file db user password dbport]
+dataSource {
+            //---------------Staging Server-------------------
+            dbCreate = "update" // one of 'create', 'create-drop','update'
+            url = "jdbc:mysql://bracint-db-master-001.crts6shw0fpv.ap-south-1.rds.amazonaws.com:3306/sbicloud_lb"
+            username = "sbicloudapp"
+            password = "AergEk26ceY3Y2bn8+WIVg=="
+
+        }
+:x
+
+# ./bin/version.sh
+# ./bin/startup.sh && tail -f logs/catalina.out
+# then check https:http://35.201.148.205/
+# yum install curl elinks -y
+# elinks http://35.201.148.205/   [check]
+# curl http://35.201.148.205/   [check]
+
+

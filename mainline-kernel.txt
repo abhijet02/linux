@@ -1,0 +1,24 @@
+dpkg -l | grep linux-image
+dpkg -l| grep linux-header
+
+
+
+sudo apt-add-repository -y ppa:cappelikan/ppa
+
+sudo apt update
+
+sudo apt install mainline
+
+
+
+
+mainline list
+
+mainline install 6.8.1
+sudo update-grub
+mainline uninstall 6.5.0-1022.24~22.04.1_gcp
+ 
+
+********************************************************
+********************************************************
+********************************************************

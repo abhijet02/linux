@@ -1,0 +1,21 @@
+1176 ################################################################################
+1177 ## GitLab Pages NGINX
+1178 ################################################################################
+
+1135 pages_external_url "https://pages.bracits.com/"
+
+
+1154 gitlab_pages["namespace_in_path"] = true
+
+
+1183 # Below you can find settings that are exclusive to "GitLab Pages NGINX"
+1184 pages_nginx['enable'] = true
+1185 pages_nginx['redirect_http_to_https'] = true
+1186 pages_nginx['ssl_certificate'] = "/etc/gitlab/ssl/pagesbracits.pem"
+1187
+1188 pages_nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/pagesbracits.pem"
+
+
+
+
+pagesbracits.pem

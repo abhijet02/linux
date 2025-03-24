@@ -1,0 +1,32 @@
+>> vim log-transfer file & then add below lines :
+
+#!/bin/bash
+rsync -rtu --delete /var/lib/edb/as11/data/log/ admiral@10.140.0.18:/Tomcat_Logs/MF-UAT_DBLOG/
+
+>> then chmod +x log-transfer
+
+Destination folder :
+mkdir MF-UAT_DBLOG
+chown admiral MF-UAT_DBLOG
+
+
+Need to add crontab :
+
+*/1 * * * * /root/log-transfer >> /var/log/log-transfer.log 2>&1
+(every minites backup)
+
+
+
+
+--------------
+-----------
+
+rsync -a -P
+
+
+
+
+MfUa!!Tjj9893ll
+
+
+

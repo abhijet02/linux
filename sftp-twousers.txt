@@ -1,0 +1,42 @@
+###### Create two new users on your CentOS server by running the following commands:
+useradd kamal
+useradd jamal
+
+
+####### Create two new directories, one for each user, and set the appropriate permissions #######
+mkdir -p /sftp/kamal
+chmod 750 -R /sftp/kamal
+chown kamal:kamal -R /sftp/kamal 
+
+mkdir -p /sftp/jamal
+chmod 750 -R /sftp/jamal
+chown jamal:jamal -R /sftp/jamal
+
+####### Edit the SSH configuration file to allow SFTP access #######
+vi /etc/ssh/sshd_config
+
+####### Uncomment the following line #######
+Subsystem sftp /usr/libexec/openssh/sftp-server
+
+####### Add the following lines to the end of the sshd_config file to create a new SFTP group and configure SFTP access for the two users #######
+
+Match group sftp
+ChrootDirectory /sftp/%u
+ForceCommand internal-sftp
+AllowAgentForwarding no
+X11Forwarding no
+AllowTcpForwarding no
+
+
+
+####### Add the two users to the new SFTP group #######
+groupadd sftp
+usermod -aG sftp kamal
+usermod -aG sftp jamal
+
+chown root:sftp sftp/kamal/
+chown root:sftp sftp/jamal/
+
+####### Restart the SSH service #######
+
+systemctl restart sshd

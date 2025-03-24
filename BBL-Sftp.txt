@@ -1,0 +1,21 @@
+ sftp---- 
+ Login here:: 
+10.42.65.87
+root
+redhat@,./87
+
+and from the above server , do sftp here 
+ sftp -P 9222 bits@172.26.8.228
+172.26.8.228
+user: bits
+pass: BitS@789
+
+
+
+
+--
+
+same folder ---then
+
+type 
+put command

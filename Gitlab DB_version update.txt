@@ -1,0 +1,40 @@
+https://docs.gitlab.com/omnibus/settings/database.html#upgrade-packaged-postgresql-server
+
+
+***************************************************************************
+
+https://gitlab-backup.bracits.com/help
+
+
+sudo gitlab-ctl status 
+
+sudo gitlab-rake gitlab:env:info
+
+gitlab-psql --version
+
+ rpm -qa |grep gitlab
+sudo gitlab-ctl pg-upgrade -V 14 
+
+
+
+sudo gitlab-ctl pg-upgrade -V 14 > /tmp/db_upgrade.log
+
+----------------------------------------------
+ ANALYZE step
+
+sudo gitlab-psql -c "SELECT relname, last_analyze, last_autoanalyze FROM pg_stat_user_tables WHERE last_analyze IS NULL AND last_autoanalyze IS NULL;"
+
+You can run ANALYZE manually if the query above returned any rows:
+sudo gitlab-psql -c 'SET statement_timeout = 0; ANALYZE VERBOSE;'
+
+
+
+***************************************************************************
+-----
+
+recovery
+-----
+
+https://pipo.blog/articles/20210901-gitlab-postgresql-recovery
+
+***************************************************************************

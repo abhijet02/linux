@@ -1,0 +1,10 @@
+**Live Server Info**
+Server Name: PROD-MARKETPLACE
+Public IP: 34.124.159.24
+Private IP: 10.148.15.18
+Username: bitsuser
+Password:cW5uC@XPGT3Y6EBb
+ 
+DB: 35.247.190.11
+User: same as app 
+Pass: same as app

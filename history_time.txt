@@ -1,0 +1,2 @@
+echo 'HISTTIMEFORMAT="%a %d %b %Y %I:%M:%S %p "' >> ~/.bashrc && source ~/.bashrc
+

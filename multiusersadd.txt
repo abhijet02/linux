@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Array of user names to create
+users=("amdadul_1776" "arindam_1776" "mubarok_1841" "jannat_1842" "nasirul_1844" "sazzad_1857" "zahirul_1858" "dhupan_1861" "mizan_1867" "abhijeet_1567" "obaidul_1432")
+
+# Default password for all users
+default_password="5C@/\tn9y,421./EKO1T"
+
+# Loop through the array and create each user
+for username in "${users[@]}"
+do
+    # Create the user and set the password
+    useradd -m -s /bin/bash -p '!' $username
+    echo "$username:$default_password" | chpasswd
+     #Add to Sudo users
+     usermod -aG wheel $username
+     # Force password change on first login
+     chage -d 0 $username
+done
+
+echo "All users have been created and added to the sudo group. They will be prompted to change their password on first login."
+

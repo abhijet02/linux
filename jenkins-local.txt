@@ -1,0 +1,11 @@
+jekins--
+
+http://10.42.54.63:8080/job/ETender-Staging/
+admin
+9Dk]Sx[y)s&={]fX
+
+
+build
+10.42.54.66
+/root/archives/etender/staging
+

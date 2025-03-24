@@ -1,0 +1,168 @@
+https://vcenter-01.bracits.com/
+https://10.42.53.171/
+administrator@vsphere.local	
+^1NC@3J#i1PmHjtBTS
+vCenT@R593%&K@3#NS
+
+
+abhijeet.adhikary@vsphere.local
+User:	abhijeet.adhikary
+Pass:	^vCen@bhi24$
+
+
+https://10.42.53.171:5480/#/ui/summary
+10.42.53.171		root   eSx!48@%H@$T&9k#7Ns#223232
+
+A3eSx!48@%H@$T&9k#7Ns#87671
+
+A3eSx!48@%H@$T&9k#7Ns#87671
+
+##################
+vbitssysadm@vsphere.local
+CxG1YB^1aV0a9myAB
+---------------------
+^1NC@3J#i1PmHjtBTS
+
+
+Abhuijk7890,./5321
+#################
+---------
+
+----------------
+At@nd,/5$
+--------------------
+ipam-- Abhi@jeet@1567.
+----------------
+
+
+
+
+eSx!48@%H@$T&9k#7Ns#
+
+
+@hD$jRK98&%356#@F6mN
+
+
+Vmware Esxi	https://10.42.65.241/ui/#/login		        root	X@hD$jRK98&%356#@F6mN
+Vmware Esxi	https://10.42.53.17/ui/#/login		        root	eSx!48@%H@$T&9k#7Ns#
+Vmware Esxi	https://10.42.65.26/				root	Em636@$FjkFDg98#$&IxN
+https://10.42.65.55/ui/#/login   				root	A@N#894sI%$J5ngj##36NA
+https://10.42.53.43/ui/#/login				        root	vExi42&%@gd96$@&tK
+https://10.42.65.45/					 	root	eSx!48@%H@$T&9k#7Ns#
+https://10.42.65.41/						root    X@hD$jRK98&%356#@F6mN
+https://10.42.53.10/						root    eSx!48@%H@$T&9k#7Ns#							
+https://10.42.53.60						root	V@e56FH543&%#k09*&nAl
+https://10.42.65.54/ui/#/login   				root	BNn24sI%$J5nLDFvv34$%#
+https://10.42.53.50						root	V@e50FeSx!48&%309*98#
+https://10.42.65.43						root	V@f43EfSx!43&%3439*34#
+https://10.42.54.24						root    VeSx2234@%H@$T&9k7!Ns#
+https://10.42.54.25						root    ZeSx!48@%HO$T&6K#7NS#
+https://10.42.54.22						root	XeSx$148@%H@$T&7c#1Ns#
+https://10.42.53.26/ui/#/login					root	Abcd..17859KJLshbABiTS
+https://10.42.53.13						root	AB3148@%H@$T78c#1PS#
+
+------------------------------------------
+------------------------------------------
+------------------------------------------
+------------------------------------------
+*************************
+Dell-r760
+*************************
+Ex: 10.42.53.26
+Idrac:10.42.54.31
+root
+AXAW3MRMXYVM
+ 
+
+*************************
+Dell-r750xs
+*************************
+Ex: 10.42.54.24
+Idrac-- 10.42.53.224  
+root
+N4KHF9HFVRKN
+
+
+Ex: 10.42.54.22
+Idrac-- 10.42.53.218  
+root
+RHMWKNXYPNVR
+
+
+Ex: 10.42.54.25
+Idrac-- 10.42.53.219  
+root
+HFEEVEKXKKH9
+***********************
+Dell-r740
+***********************
+Ex: 10.42.65.70
+Idrac :10.42.53.170
+user: root
+pass: calvin
+
+Ex : 10.42.65.43
+Idrac-- 10.42.53.43
+user: root
+pass: m@@3ObracitR0sS243Aj
+
+##########################
+Dell-r730
+##########################
+Ex: 10.42.53.60
+Idrac :10.42.53.62
+user: root
+pass: calvin
+
+Ex: 10.42.53.50
+Idrac :10.42.53.51
+user: root
+pass: T8o1w70S0&W@@KL50
+
+
+Ex: 10.42.65.55
+Idrac :10.42.53.238
+user: root
+pass: 24J9&Wrp!j&XAbt24<.j
+
+
+Ex: 10.42.65.45
+Idrac :10.42.53.221
+user: root
+pass: b43CV8]Z?Na=Abc6545
+
+Hyperv-10.42.53.21
+Idrac : 10.42.53.22
+user: root
+pass : ABb@ritEz^M8##6453p@@
+
+##########################
+Lenovo-SR650
+##########################
+Hyper-v-IP : 10.42.54.121
+xlarity IP :10.42.54.123
+USERID
+d#vy11*R9w60ABiy23
+
+
+------------------------------------------
+------------------------------------------
+------------------------------------------
+------------------------------------------
+
+abhijeet.adhikary@vsphere.local
+User:	abhijeet.adhikary
+Pass:	^vCen@bhi24$
+
+
+
+
+http://10.42.54.227:81/
+User: abhijeet.adhikary@bracits.com
+Pass: A@56Gr#%78Hrt&Tp9845
+
+
+
+---------------------
+
+

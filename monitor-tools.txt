@@ -1,0 +1,48 @@
+https://www.youtube.com/watch?v=rRKDfU4tmJQ
+https://github.com/shazforiot/grafana_influxdb-docker-compose
+
+
+
+
+https://grafana.com/grafana/dashboards/5955
+
+-------------------------------
+version: "2"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - grafana_network
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - influxdb
+
+
+  influxdb:
+    image: influxdb:1.8-alpine
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - grafana_network
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=telegraf
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_USER_PASSWORD=tele1234
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin123
+networks:
+  grafana_network:
+volumes:
+  grafana_data:
+  influxdb_data:
+-------------------------

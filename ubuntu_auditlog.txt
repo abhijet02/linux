@@ -1,0 +1,74 @@
+sudo apt update
+sudo apt install auditd audispd-plugins
+
+
+vim /etc/audit/auditd.conf
+===========================================================
+Modify the log_file setting to include the timestamp:
+log_file = /var/log/audit/audit_%Y%m%d.log
+### max_log_file = 100   # Set maximum log file size (in MB)
+max_log_file_action = ROTATE  # Rotate the logs when max size is reached
+num_logs = 60    # Keep logs for 60 days
+####
+
+
+Ensure the log_format is Set to RAW:
+log_format = RAW
+
+
+
+==========================================================
+vim /etc/audit/rules.d/audit.rules
+
+
+# Monitor file reads, writes, and attribute changes in /var/log
+-w /var/log -p wa -k log_files
+-w /root/abhijeet -p rwa -k directory_access
+##to monitor the /etc/passwd file and the /var/log/audit/ directory##
+-w /etc/passwd -p wa -k passwd_changes
+-w /var/log/audit/ -p wa -k audit_logs
+
+## Add a Rule to Monitor Deletions##
+-w /var/log/audit/ -p wa -k audit_delete
+
+##### Monitor all files for write, attribute change, execute, and directory operations ###
+-w / -p wa -k file_changes
+
+# Monitor all executions
+-a always,exit -F arch=b64 -S execve -k all_execs
+-a always,exit -F arch=b32 -S execve -k all_execs
+
+
+sudo systemctl restart auditd
+sudo systemctl status auditd
+
+sudo auditctl -l
+sudo ausearch -k directory_access
+
+
+
+################################
+
+Install sendemail for SMTP Communication
+
+#################################
+
+sudo apt install sendemail
+sudo apt install inotify-tools
+vim /usr/local/bin/monitor_audit_logs.sh
+
+#!/bin/bash
+
+inotifywait -m -e delete -e create -e modify /var/log/audit/ |
+while read path action file; do
+    sendemail -f awarnes@bracits.com \
+              -t infra.support@bracits.com \
+              -u "Audit Log Alert: $action detected" \
+              -m "Audit log file $file was $action in $path" \
+              -s 10.42.65.171:25
+    cp -a /var/log/audit/ /backup/location/
+done
+
+
+chmod +x /usr/local/bin/monitor_audit_logs.sh
+

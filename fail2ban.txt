@@ -1,0 +1,79 @@
+##################### For Support ######################################
+
+### For Checking Whice IPs are blocked now #####
+
+systemctl status fail2ban
+fail2ban-client status sshd
+fail2ban-client status sshd |grep 10.44.77.131
+
+
+### For unblocked the IP from fail2ban #####
+
+fail2ban-client set sshd unbanip 10.44.77.131
+
+
+### get the list of banned IP addresses run #####
+
+iptables -L -n
+
+##To check failed root login attempts use the command below###
+
+cat /var/log/secure | grep 'Failed password'
+
+======================================================================
+======================================================================
+
+#### Installing IN centos7 ####
+
+yum install epel-release -y
+yum install fail2ban fail2ban-systemd -y
+cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+vim /etc/fail2ban/fail2ban.local
+
+41 [DEFAULT]
+54 ignoreip = 127.0.0.1/8 ::1 10.100.59.198
+60 ignorecommand =
+63 bantime  = 10m
+67 findtime  = 10m
+70 maxretry = 5
+73 maxmatches = %(maxretry)s
+129 filter = %(__name__)s[mode=%(mode)s]
+158 port = 0:65535
+
+
+Next, we need to create and edit a new file in Vim called sshd.local.
+Touch /etc/fail2ban/jail.d/sshd.local && chmod +x /etc/fail2ban/jail.d/sshd.local
+
+[sshd]
+enabled = true
+port = ssh
+action = iptables-multiport
+logpath = /var/log/secure
+maxretry = 3
+bantime = 60000
+
+systemctl enable firewalld
+systemctl enable fail2ban
+systemctl start fail2ban
+fail2ban-client status
+
+
+
+
+
+
+------------------------------
+URL: 
+
+https://cloudcone.com/docs/article/how-to-install-fail2ban-on-centos-7/
+https://linuxhint.com/whitelist-ip-address-fail2ban/
+
+https://www.hostinger.com/tutorials/fail2ban-configuration
+
+https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-centos-7
+
+https://www.liquidweb.com/kb/install-fail2ban-on-centos-7/
+
+----------------------------
+

@@ -1,0 +1,90 @@
+https://www.mysamplecode.com/2012/05/automatically-start-tomcat-linux-centos.html
+
+
+
+Step 1: Create a file named tomcat6 in your /etc/init.d directory
+$ cd /etc/init.d
+$ gedit tomcat6
+
+Step 2: Copy the following script and save the file
+#!/bin/bash
+# chkconfig: 2345 80 20
+# Description: Tomcat Server basic start/shutdown script
+# /etc/init.d/tomcat6 -- startup script for the Tomcat 6 servlet engine
+
+TOMCAT_HOME=/usr/local/apache-tomcat-6.0.35/bin
+START_TOMCAT=/usr/local/apache-tomcat-6.0.35/bin/startup.sh
+STOP_TOMCAT=/usr/local/apache-tomcat-6.0.35/bin/shutdown.sh
+
+start() {
+ echo -n "Starting tomcat6: "
+ cd $TOMCAT_HOME
+ ${START_TOMCAT}
+ echo "done."
+}
+
+stop() {
+ echo -n "Shutting down tomcat6: "
+ cd $TOMCAT_HOME
+ ${STOP_TOMCAT}
+ echo "done."
+}
+
+case "$1" in
+ 
+start)
+ start
+ ;;
+
+stop)
+ stop
+ ;;
+
+restart)
+ stop
+ sleep 10
+ start
+ ;;
+
+*)
+ echo "Usage: $0 {start|stop|restart}"
+
+esac
+exit 0
+
+Change the settings for the chkconfig based on your requirements. In a scenario where Apache Web server is in the front of Tomcat server with MySQL database usually the startup sequence should be MySQL then Tomcat and Apache Web Server in last. Also make sure you change the TOMCAT_HOME, START_TOMCAT and STOP_TOMCAT variables based on your Tomcat Install.
+
+Step 3: Update the file permissions to make it executable by any user
+$ chmod 755 tomcat6
+
+Step 4: Make sure you have chkconfig command installed
+$ chkconfig --helpotherwise just install it
+$ sudo apt-get install chkconfig
+ 
+Step 5: Run chkconfig command to add the script to the startup services
+$ chkconfig --add tomcat6
+
+Basically the chkconfig command automatically adds the symbolic links for starting and stopping the service based on the paramaters passed to it. Here is the list of links created from the above link. You can run the find command to check.
+$ find . -name "*tomcat6"
+
+Response from the above command ...
+./rc.d/init.d/tomcat6
+./rc.d/rc4.d/S80tomcat6
+./rc.d/rc3.d/S80tomcat6
+./rc.d/rc6.d/K20tomcat6
+./rc.d/rc5.d/S80tomcat6
+./rc.d/rc2.d/S80tomcat6
+./rc.d/rc0.d/K20tomcat6
+./rc.d/rc1.d/K20tomcat6
+
+Step 6: Make sure scripts got added to the startup services
+Type the following command on the Terminal
+$ chkconfig --list tomcat6
+Response should be something like this
+tomcat6         0:off   1:off   2:on    3:on    4:on    5:on    6:off
+ 
+Step 7: Verify your service is working
+To start the Tomcat server
+$ service tomcat start
+To stop the Tomcat server
+$ service tomcat stop

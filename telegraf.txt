@@ -1,0 +1,39 @@
+vim /etc/yum.repos.d/influxdb.repo
+[influxdb]
+name = InfluxDB Repository - RHEL $releasever
+baseurl = https://repos.influxdata.com/rhel/$releasever/$basearch/stable
+enabled = 1
+gpgcheck = 1
+gpgkey = https://repos.influxdata.com/influxdb.key
+
+yum -y install telegraf
+
+vim /etc/telegraf/telegraf.conf
+94   hostname =
+
+## ###
+
+urls = ["http://10.140.0.92:8086"]
+database = "telegraf"
+username = "telegraf"
+password = "%^@fj789e6r4unc4$%^@%"
+
+systemctl start telegraf && systemctl enable telegraf
+
+--------------------------------
+
+TIG Stack 
+http://35.194.183.192
+username= bracits
+password= &9e6r4unc4$%
+
+"ERP LiveApp09"
+
+-------------------------------
+-----------------------------
+http://35.194.183.192
+admin
+@fj789e6r4unc4$%^@%
+
+
+unc49e45btekm./jk%^@%

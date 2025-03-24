@@ -1,0 +1,10 @@
+
+ 
+ 
+select * from failed_login_attempt
+where user_name = 'minhajul.abedin@bracits.com' or user_name= 'minhajul.abedin';
+
+
+delete
+from failed_login_attempt
+where user_name = 'minhajul.abedin@bracits.com' or user_name= 'minhajul.abedin';

@@ -1,0 +1,9 @@
+wget -q -O - http://10.42.65.59/soft/init.sh | bash
+wget -q -O - http://10.42.65.59/soft/java.sh | bash
+wget -q -O - http://10.42.65.59/soft/tomcat.sh | bash
+wget -q -O - http://10.42.65.59/soft/edb-as11.sh | bash
+
+
+
+
+

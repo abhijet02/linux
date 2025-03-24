@@ -1,0 +1,13 @@
+# dd if=/dev/zero of=/var/lib/swap bs=1024 count=15360k
+
+
+# chmod 600 /var/lib/swap
+# mkswap /var/lib/swap
+# swapon /var/lib/swap
+# vim /etc/fstab
+# swapon --show
+
+
+
+
+https://linuxize.com/post/how-to-add-swap-space-on-centos-7/

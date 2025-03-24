@@ -1,0 +1,48 @@
+https://www.server-world.info/en/note?os=CentOS_7&p=iscsi&f=2
+https://www.itzgeek.com/how-tos/linux/centos-how-tos/configure-iscsi-target-initiator-on-centos-7-rhel7.html
+
+
+----------
+
+yum -y install iscsi-initiator-utils
+vi /etc/iscsi/initiatorname.iscsi
+InitiatorName=iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb
+              iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb
+
+#### If CHAP open ######
+
+# line 57: uncomment
+node.session.auth.authmethod = CHAP
+
+# discover target
+
+node.session.auth.chap_algs = MD5
+
+# line 61,62: uncomment and specify the username and password you set on the iSCSI target server
+node.session.auth.username = username
+node.session.
+auth.password = password
+#### If CHAP open ######
+
+-----------------------
+
+systemctl restart iscsid.service
+systemctl enable iscsid.service
+iscsiadm -m discovery -t sendtargets -p 10.44.35.250
+iscsiadm -m node -T iqn.2004-04.com.qnap:ts-673:iscsi.hrlivedb.390aeb -p 10.44.35.250 --login
+------------------------------------------------
+iscsiadm -m node -T iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb -p nasdr.bracits.com --login
+-----------------------------------------------
+
+
+
+--
+cat /etc/fstab
+{{ 8       16    5238784 sdb))
+
+mkfs.xfs /dev/sdb
+mount /dev/sdb /mnt
+blkid /dev/sdb
+vi /etc/fstab
+UUID=c7469f92-75ec-48ac-b42d-d5b89ab75b39 /mnt                    xfs     _netdev         0 2
+

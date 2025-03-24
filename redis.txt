@@ -1,0 +1,141 @@
+Install Redis:
+--------------
+--------------
+sudo yum install epel-release
+sudo yum install redis -y
+sudo systemctl start redis
+sudo systemctl status redis
+sudo systemctl enable redis
+redis-cli ping
+If Redis is running, it will return:
+PONG
+Congratulations! Redis is now installed and running!
+
+----------------------------
+----------------------------
+Clean redis:
+redis-cli flushall
+
+redis-cli -p 6380
+----------------------------
+----------------------------
+multiple Redis:
+
+Step One : Install Redis
+
+Refer this article Install Redis Standalone instance
+
+Now redis one is running successfully on port 6379
+
+Redis one status verify
+systemctl start redis
+systemctl status redis
+Step Two : Enable redis two instance
+
+----------------------
+
+
+
+There is no additional installation needed to enable another redis instance.
+
+   
+Please follow below steps
+
+Copy the redis.conf file to /etc/redis2.conf,  like below
+cp -r /etc/redis.conf /etc/redis2.conf
+
+Open the file using vim
+vim /etc/redis2.conf
+
+Update the below entries on the file.
+port 6378
+dir /var/lib/redis2
+
+logfile /var/log/redis/redis2.log
+
+pidfile /var/run/redis/redis2.pid
+
+Step Three : Create folders and set permissions
+
+Folder create
+mkdir -p /var/lib/redis2
+Set ownership and permission
+chown -R redis.redis /var/lib/redis2
+chown -R redis.root /etc/redis2.conf
+
+Step Four :  Create Service file
+
+Create file /usr/lib/systemd/system/redis2.service
+add this content
+
+[Unit]
+Description=Redis persistent key-value database
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/redis-server /etc/redis2.conf --daemonize no
+ExecStop=/usr/libexec/redis-shutdown redis2
+User=redis
+Group=redis
+RuntimeDirectory=redis
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target
+
+Open the file vim /usr/lib/systemd/system/redis.service
+replace the entry with below set
+
+[Unit]
+Description=Redis persistent key-value database
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/redis-server /etc/redis.conf --daemonize no
+ExecStop=/usr/libexec/redis-shutdown redis
+User=redis
+Group=redis
+RuntimeDirectory=redis
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target
+
+Step Five : Systemd file update
+
+To service file changes take effect, run the below command
+systemctl daemon-reload
+To start the new instance
+systemctl start redis2
+To ensure the service running status
+systemctl status redis2
+To enable service on system boot
+systemctl enable redis2
+Step Six : Check multiple redis instance status
+
+Port listening status
+netstat -antlp | grep -i listen| grep :637
+tcp 0 0 127.0.0.1:6379 0.0.0.0:* LISTEN 20212/redis-server
+tcp 0 0 127.0.0.1:6378 0.0.0.0:* LISTEN 20336/redis-server
+Step Seven : Verify the status
+
+Using Redis-cli
+
+Instance one:
+redis-cli -h 127.0.0.1 -p 6379 ping
+  If Redis one is running, it will return:
+PONG
+Instance two:
+redis-cli -h 127.0.0.1 -p 6378 ping
+  If Redis two is running, it will return:
+PONG
+
+
+
+http://sysops.km2gd.com/how-to-run-multiple-redis-instance-on-centos-7-it-supports-centos-6-6-5/
+http://sysops.km2gd.com/how-to-install-redis-on-centos-7/
+
+
+AUTH 9941cc15f59e41cb7be6c52
+
+b840fc0

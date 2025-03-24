@@ -1,0 +1,27 @@
+Windows shared folder mount on Ubuntu
+
+****Share folder from windows machine and assign permission against windows specific user.
+
+Package:
+#apt install cifs-utils
+
+Mount Point:
+/home/admiral/cloud/attendance
+
+For Temporary mount:
+#mount -t cifs //10.100.10.222/cloud-backup /home/admiral/cloud/attendance -o username=bitssysadm, password=abcd1234,./222
+
+For Permanent mount:
+create credential file for storing username and pass
+#vim /etc/cifs-credentials
+username=bitssysadm
+password=abcd1234,./222
+
+Secure credential file
+#chmod 600 /etc/cifs-credentials
+
+Entry on fstab file
+#vim /etc/fstab
+//10.100.10.222/cloud-backup /home/admiral/cloud/attendance cifs credentials=/etc/cifs-credentials,uid=0,gid=0 0 0
+
+#mount -a

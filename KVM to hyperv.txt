@@ -1,0 +1,40 @@
+
+https://cloudbase.it/qemu-img-windows/
+https://stackoverflow.com/questions/57401387/export-kvm-vm-to-hyperv
+
+
+qemu-img.exe convert source.img -O vhdx -o subformat=dynamic dest.vhdx
+---------------------
+centos7
+
+qemu-img convert -f qcow2 app-6541.qcow2 -O vhdx -o subformat=dynamic /convert/ok/app-6541.vhdx
+--------------
+check :
+qemu-img.exe check source.qcow2
+
+info :
+qemu-img.exe info image.qcow2
+
+------------------
+
+https://mangolassi.it/topic/8351/updating-the-linux-boot-image-before-migrating-from-vmware-to-hyper-v
+
+
+###CentOS 7
+
+mkinitrd -f -v --with=hid-hyperv --with=hv_utils --with=hv_vmbus --with=hv_storvsc --with=hv_netvsc /boot/initramfs-$(uname -r).img $(uname -r)
+
+
+
+convert-command 
+qemu-img convert -f qcow2 SourceDisk.qcow2 -O vhdx -o subformat=dynamic Destination.vhdx
+
+qemu-img convert -f qcow2 bi-5387.qcow2.qcow2 -O vhdx -o subformat=dynamic hyperv.vhdx
+
+----------------------
+
+dracut -f --add-drivers "hv_vmbus hv_storvsc hv_netvsc hv_utils hv_balloon hyperv-keyboard hyperv_fb hid-hyperv"
+https://fedoramagazine.org/initramfs-dracut-and-the-dracut-emergency-shell/
+
+dracut --force --no-hostonly
+dracut --forcedra 

@@ -1,0 +1,23 @@
+groupadd devgrp && groupadd qagrp && groupadd sysgrp
+
+mkdir /DevRelease && chgrp devgrp /DevRelease && chmod 2770 /DevRelease
+
+mkdir /QARelease && chgrp qagrp /QARelease && chmod 2770  /QARelease
+
+mkdir /FinalRelease && chgrp sysgrp /FinalRelease && chmod 2770 /FinalRelease
+
+usermod -a -G devgrp shaon
+usermod -a -G qagrp nazmul
+usermod -a -G sysgrp palash
+
+--------------------------------------------
+setfacl -Rm  g:qagrp:rx /DevRelease/
+setfacl -Rm  g:devgrp:rx /QARelease/
+
+setfacl -Rm  g:sysgrp:rx /QARelease/
+setfacl -Rm  g:sysgrp:rx /DevRelease/
+
+
+Remaining
+setfacl -Rm  g:qagrp:rx /FinalRelease
+

@@ -1,0 +1,37 @@
+https://linuxhint.com/install-and-configure-nfs-server-ubuntu-22-04/
+
+
+apt install nfs-kernel-server -y
+
+sudo chown -R nobody:nogroup /mnt/shared_drive
+
+ sudo chmod 777 /mnt/shared_drive
+ 
+ vim /etc/exports
+
+
+/mnt/shared_drive 10.42.65.1/24(rw,sync,no_subtree_check)
+sudo exportfs -a
+
+sudo systemctl restart nfs-kernel-server
+
+sudo ufw allow from 10.42.65.1/24 to any port nfs
+sudo ufw enable && sudo ufw status
+
+===
+
+
+client PC :
+
+sudo apt install nfs-common -y
+yum install nfs-utils nfs-utils-lib
+sudo mkdir -p /mnt/shared_drive
+sudo mount 10.42.65.195:/mnt/shared_drive /mnt/shared_drive
+
+=====
+fstab
+10.42.65.195:/mnt/shared_drive /mnt/shared_drive nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+====
+
+
+

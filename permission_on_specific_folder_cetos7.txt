@@ -1,0 +1,34 @@
+You can prevent a user from accessing certain parts of the filesystem by setting access control lists. For example, to ensure that the user abcd cannot access any file under /home:
+
+
+setfacl -m user:abcd:0 /home
+
+for provide access
+setfacl -m user:abcd:1 
+
+
+
+#####
+do not type 
+setfacl -m user:abcd:0 /   -- it will stop access the server.
+
+###
+First remove all access from root
+setfacl -m user:abcd:0 /root/
+
+####
+then provide access to specfig pathe
+setfacl -m user:abcd:1 /root/folder1
+
+
+
+
+-------------------------------------------
+-------------------------------------------
+
+https://unix.stackexchange.com/questions/101576/give-user-read-write-access-to-only-one-directory
+
+
+https://www.golinuxcloud.com/sftp-chroot-restrict-user-specific-directory/
+
+

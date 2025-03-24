@@ -1,0 +1,67 @@
+sudo apt update
+sudo apt install fail2ban
+sudo systemctl status fail2ban
+
+
+#########Fail2ban Configuration
+
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+vim /etc/fail2ban/jail.local
+
+
+#########################
+Uncomment the line starting with ignoreip and add your IP addresses separated by space:
+
+/etc/fail2ban/jail.local
+ignoreip = 127.0.0.1/8 ::1 
+bantime  = 1d
+findtime  = 10m
+maxretry = 3
+
+
+
+##########################Email Notifications
+action = %(action_mw)s
+destemail = admin@linuxize.com
+
+sender = root@linuxize.com
+
+############################# By default, only the ssh jail is enabled. To enable a jail, you need to add enabled = true after the jail title. 
+The following example shows how to enable the proftpd jail:
+
+
+[sshd]
+enabled   = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry  = 3
+findtime  = 1d
+bantime   = 4w
+ignoreip  = 127.0.0.1/8 
+
+
+####################
+sudo systemctl restart fail2ban && sudo systemctl status fail2ban
+
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+fail2ban-client -h
+sudo fail2ban-client status sshd
+sudo fail2ban-client set sshd unbanip 23.34.45.56
+sudo fail2ban-client set sshd banip 23.34.45.56
+
+
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+
+https://linuxize.com/post/install-configure-fail2ban-on-ubuntu-20-04/
+https://zomro.com/blog/faq/365-how-to-install-and-configure-fail2ban-in-ubuntu-2004
+
+
+https://tecadmin.net/how-to-install-and-configure-fail2ban-on-ubuntu-20-04/
+

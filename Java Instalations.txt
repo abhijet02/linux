@@ -1,0 +1,47 @@
+1. Copy from 10.42.65.59_War Release
+2. Create /bits folder
+3. then create /bits/jdk folder
+4. unzip the file by using 
+  # tar -xvf jdk1.7.0_25.tar.gz
+5. link
+ ln -s jdk >> java
+
+6. vim /etc/profile
+add below two lines :
+
+JAVA_HOME=/bits/jdk/java
+PATH=$PATH:$JAVA_HOME/bin
+
+7.source /etc/profile
+
+echo $JAVA_HOME
+
+java -version
+java -showversion Test
+
+
+new java--
+/usr/lib/jvm/jre
+yum install java-1.8.0-openjdk-devel -y
+
+tar cvf tomcat-9.tar.gz tomcat-9
+
+centose--7
+53..
+160
+
+Host - erp-uat-app
+IP: 104.199.211.13
+User -  uatapp
+Pass - brac#321
+
+
+kdsjh1625363><:P(
+
+120
+
+
+mike@amgjets.com
+
+
+DISM /online /Set-Edition:ServerStandard /ProductKey:WC2BQ-8NRM3-FDDYY-2BFGV-KHKQY /AcceptEula

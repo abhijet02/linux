@@ -1,0 +1,5 @@
+Pihole
+http://pihole.bracits.com/admin/	
+pw: bJk%8N9t&gUs@3&45hM
+http://pihole-backup.bracits.com/admin/
+pw: bAL%87M9t&gUs@4&98hB

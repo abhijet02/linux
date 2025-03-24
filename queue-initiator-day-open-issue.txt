@@ -1,0 +1,4 @@
+INSERT INTO public.api_consumer (id, version, controller, ip, key)
+VALUES (DEFAULT, 1, 'businessdaywapi', '104.199.211.13', '5d0a4a85-df7a-scapi-bits-93eb-145f6a9902ae');
+INSERT INTO public.api_consumer (id, version, controller, ip, key)
+VALUES (DEFAULT, 1, 'businessdaywapi', '10.140.0.130', '5d0a4a85-df7a-scapi-bits-93eb-145f6a9902ae');

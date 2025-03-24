@@ -1,0 +1,61 @@
+https://www.groovypost.com/howto/how-to-downgrade-the-kernel-in-ubuntu/
+
+
+
+
+dpkg -l | grep linux-image
+dpkg -l| grep linux-header
+
+
+
+sudo apt-add-repository -y ppa:cappelikan/ppa
+
+sudo apt update
+
+sudo apt install mainline
+
+
+
+
+mainline list
+
+ mainline install 6.8.1
+sudo update-grub
+
+ mainline uninstall 6.5.0-1022.24~22.04.1_gcp
+sudo update-grub
+
+**************************************************
+**************************************************
+https://askubuntu.com/questions/1404722/downgrade-kernel-for-ubuntu-22-04-lts
+
+
+wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh
+chmod +x ubuntu-mainline-kernel.sh
+
+# search and find your wanted version
+ubuntu-mainline-kernel.sh -r | grep 5.13
+
+# install that version kernel
+ubuntu-mainline-kernel.sh -i v5.13.19
+
+# get all menuentries
+grep 'menuentry \|submenu ' /boot/grub/grub.cfg | cut -f2 -d "'"
+
+# change the grub configuration
+vi /etc/default/grub
+from: GRUB_DEFAULT=0
+to: GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 5.13.19-051319-generic"
+
+# update grub
+update-grub
+
+# reboot
+reboot now
+
+# verify
+uname -r
+
+**********************************
+
+https://discourse.ubuntu.com/t/how-to-downgrade-the-kernel-on-ubuntu-20-04-to-the-5-4-lts-version/26459

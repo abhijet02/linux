@@ -1,0 +1,30 @@
+#### Fedora system ####
+Problem : btrfs file system in sysroot mount problem
+
+Solutions : https://www.youtube.com/watch?v=UrEPbQikLPY
+
+
+systemc	status sysroot.mount
+mount -t btrfs -o recovery,nospace_cache,clear_cache /dev/sda3 /sysroot
+
+
+###### Centos & ubuntu #######################
+
+Edit:1 I run the xfs_repair with live-cd and the output is
+
+sudo xfs_repair -v -L /dev/dm-0
+
+or
+
+rm -f /usr/sbin/mount
+dracut -v --install /usr/bin/mount -f /boot/initramfs-<release_version_of_kernel>.el7.x86_64.img <release_version_of_kernel>
+
+https://unix.stackexchange.com/questions/654617/failed-to-mount-sysroot-zfs-on-lvm-on-luks-with-detached-header
+
+
+https://www.youtube.com/watch?v=uzmGVJTlWfo
+
+
+-------------------------------------
+
+https://www.youtube.com/watch?v=mnZ3YUnKzDU

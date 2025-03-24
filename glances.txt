@@ -1,0 +1,57 @@
+https://www.tecmint.com/glances-monitor-remote-linux-systems/
+https://www.youtube.com/watch?app=desktop&v=ZCl-Eicx1MY
+https://www.geeksforgeeks.org/how-to-use-glances-to-monitor-remote-linux-in-web-server-mode/
+https://opensource.com/article/19/11/monitoring-linux-glances#:~:text=The%20first%20line%20shows%20the,space%20that%20are%20in%20use.
+
+
+---------------------------------
+
+sudo apt install glances python-bottle         [On Debian, Ubuntu and Mint]
+$ sudo yum install glances python-bottle         [On RHEL/CentOS/Fedora and Rocky/AlmaLinux]
+$ sudo emerge -a sys-apps/glances python-bottle  [On Gentoo Linux]
+$ sudo apk add glances python-bottle             [On Alpine Linux]
+$ sudo pacman -S glances python-bottle           [On Arch Linux]
+$ sudo zypper install glances python-bottle      [On OpenSUSE]   
+
+
+--------------
+
+---------------
+
+Once you have installed the above packages, launch glances with the -w flag to run it in web server mode. By default, it will listen on port 61208.
+
+$ glances -w 
+OR
+$ glances -w &
+
+
+
+------
+----
+Run Glances in Web Server Mode as a Service
+Start by creating your service unit file (which I have preferred to name as glancesweb.service) under 
+
+/usr/lib/systemd/system/glancesweb.service.
+
+$ sudo vim /usr/lib/systemd/system/glancesweb.service
+Then copy and paste the unit file configuration below in it.
+
+[Unit]
+Description = Glances in Web Server Mode
+After = network.target
+
+[Service]
+ExecStart = /usr/bin/glances  -w  -t  5
+
+[Install]
+WantedBy = multi-user.target
+
+-------------
+
+$ sudo systemctl enable glancesweb.service
+$ sudo systemctl start glancesweb.service
+$ sudo systemctl status glancesweb.service
+------
+
+
+

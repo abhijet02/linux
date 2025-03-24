@@ -1,0 +1,25 @@
+lsblk
+df -Th
+ 
+------
+echo 1 > /sys/block/sda/device/rescan
+-------
+parted
+p
+
+resizepart
+
+
+
+input partition number 2
+
+( parted /dev/vda
+total disk size :  will be end size)
+
+pvresize /dev/sda3
+lvextend -l +100%FREE -r /dev//mapper/ubuntu--vg-ubuntu--lv
+
+
+
+resize2fs /dev/sda
+

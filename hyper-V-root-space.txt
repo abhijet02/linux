@@ -1,0 +1,54 @@
+https://www.teknophiles.com/2018/12/09/resizing-the-linux-root-partition-in-a-gen2-hyper-v-vm/
+
+https://superuser.com/questions/1716141/how-to-expand-ubuntu-20-04-lts-filesystem-volume-on-hyper-v
+
+------------------------------
+------------------------------
+
+
+lsblk
+df -Th
+ 
+------
+echo 1 > /sys/block/sda/device/rescan
+-------
+parted
+p
+
+resizepart
+
+
+
+input partition number 2
+
+( parted /dev/vda
+total disk size :  will be end size)
+
+lsblk
+pvresize /dev/sda3
+
+df -hT
+lvextend -l +100%FREE -r /dev/mapper/centoechs-root
+
+
+
+------------
+problem in gpt--
+
+https://askubuntu.com/questions/386752/fixing-corrupt-backup-gpt-table
+
+The simplest way to fix backup GPT is:
+
+sgdisk -e <target-device>
+for example:
+
+sgdisk -e /dev/sda
+or 
+override
+sgdisk -g /dev/sda
+
+https://techjogging.com/convert-mbr-partition-into-gpt-in-centosrhel-7.html
+
+https://superuser.com/questions/1250895/converting-between-gpt-and-mbr-hard-drive-without-losing-data
+-------------------------------------
+

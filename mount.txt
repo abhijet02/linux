@@ -1,0 +1,1 @@
+mount -t cifs -o user=salahuddin.ahmed,workgroup=bracits.com,vers=2.0 //10.100.43.118/war /10.100.43.118

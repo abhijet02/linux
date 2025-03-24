@@ -1,0 +1,14 @@
+su - enterprisedb
+
+cd /data/edb/.ssh
+
+ls -la
+
+vim authorized_keys
+
+chmod 600 authorized_keys
+
+
+
+ssh enterprisedb@10.140.0.136
+ioknhn   fcvi 

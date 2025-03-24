@@ -1,0 +1,19 @@
+https://www.tecmint.com/monitor-linux-user-activity-psacct-acct/
+
+
+yum install psacct-y
+
+
+sudo apt install acct -y
+sudo systemctl start psacct
+sudo systemctl enable psacct
+sudo systemctl status psacct
+
+
+
+lastcomm --user cent
+
+
+
+lastcomm --command su
+

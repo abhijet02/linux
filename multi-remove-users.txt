@@ -1,0 +1,1 @@
+for u in amdadul_1776 arindam_1776 mubarok_1841 jannat_1842 nasirul_1844 sazzad_1857 zahirul_1858 dhupan_1861 mizan_1867 abhijeet_1567 obaidul_1432; do echo "$u"; userdel -r "$u"; done

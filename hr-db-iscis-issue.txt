@@ -1,0 +1,42 @@
+#### Find which session a disk belongs to:
+
+iscsiadm -m session
+
+
+#### Log out of the iSCSI connections with the command
+
+iscsiadm -m node -T iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb -p nasdr.bracits.com --logout
+
+
+
+
+#### umount
+
+umount /dev/sdb  /backup-remote
+
+
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+
+#### Find which session a disk belongs to:
+iscsiadm -m session
+
+#### Log in of the iSCSI connections with the command
+
+iscsiadm -m node -T iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb -p nasdr.bracits.com --login
+
+#### mount /dev/sdb  /backup-remote
+
+https://www.thegeekdiary.com/how-to-troubleshoot-iscsi-issue-is-centos-rhel-67/
+umount -l /root/nasdr-backup
+
+
+
+
+#### 
+Remove/clear database :
+iscsiadm -m discoverydb -o delete -t sendtargets -p nasdr.bracits.com
+iscsiadm -m discoverydb -o delete -t sendtargets -p iqn.2004-04.com.qnap:ts-673:iscsi.hrdbbk.390aeb

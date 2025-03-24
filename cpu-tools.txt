@@ -1,0 +1,67 @@
+https://www.tecmint.com/cputool-limit-linux-process-cpu-usage-load/
+
+sudo apt install cputool -y
+dd if=/dev/zero of=/dev/null &
+cputool --cpu-limit 50 -p 8275
+
+
+***************************************************
+
+vi /etc/sysctl.conf
+
+cpupower frequency-set --governor performance
+
+https://community.centminmod.com/threads/some-performance-optimization-tips-on-centos.8946/
+sync && echo 3 > /proc/sys/vm/drop_caches
+
+______________________
+
+https://www.tecmint.com/tuned-automatic-performance-tuning-of-centos-rhel-servers/
+
+--------------
+--------------
+--------------
+
+
+fs.file-max
+vm.swappiness
+vm.dirty_ratio
+vm.dirty_background_ratio
+
+
+net.ipv4.tcp_synack_retries
+net.ipv4.ip_local_port_range
+net.ipv4.tcp_rfc1337
+net.ipv4.tcp_fin_timeout
+net.ipv4.tcp_keepalive_time
+net.ipv4.tcp_keepalive_probes
+net.ipv4.tcp_keepalive_intvl
+
+
++++++++++++++++++++++++++++++++++++++
+
+https://ivanvari.com/solving-poor-performance-on-rhel-and-centos-7/
+
+______________
+
+cat /proc/meminfo | grep Huge
+
+
+------------------------
+systemctl list-unit-files --type=service --state=disable
+echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.conf
+
+---------------
+
+cat /sys/block/sda/queue/scheduler
+
+-----------
+
+watch -n1 -d "cat /proc/interrupts"
+ps -eo psr,tid,pid,comm,%cpu,priority,nice -T | sort -g | grep irq
+
+------------------------
+
+/etc/systemd/system.conf
+
+

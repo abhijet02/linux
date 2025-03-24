@@ -1,0 +1,7 @@
+yum install gdisk -y
+gdisk /dev/sda
+w
+
+
+https://techjogging.com/convert-mbr-partition-into-gpt-in-centosrhel-7.html
+https://recoverit.wondershare.com/partition-tips/convert-mbr-to-gpt-linux.html

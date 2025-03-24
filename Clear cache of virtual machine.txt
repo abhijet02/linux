@@ -1,0 +1,22 @@
+To clear the pagecache, dentries, and inodes, you can use the following command, 
+
+sudo sync; echo 3 > /proc/sys/vm/drop_caches 
+
+or
+
+sudo sync; sudo sysctl -w vm.drop_caches=3
+
+
+
+If you're experiencing DNS-related issues, clear the DNS cache:
+sudo systemd-resolve --flush-caches
+
+For nscd (Name Service Cache Daemon):
+sudo systemctl restart nscd
+
+
+
+diagnose webfilter fortiguard statistics flush
+
+
+Ok, another attempt; under System->Maintenance->FortiGuardCenter->WebFiltering there' s a box to fill with TTL for WF caching. Default value when enabled is 3600 seg This means that your FGT will store URL ratings in the cache for 1 hour without contact Fguard servers again (or until newer cache entries force the removal of the older ones) What about to change that value to force expiration?

@@ -1,0 +1,16 @@
+1. Dry Run Command (1.5 years)
+docker images --filter "dangling=false" --format "{{.Repository}}:{{.Tag}} {{.CreatedAt}}" | \
+awk '{cmd="date +%s -d \""$2" "$3" "$4"\""; cmd | getline imageTime; close(cmd); currentTime=systime(); if ((currentTime - imageTime) > 47260800) print $1}'
+
+
+docker images --filter "dangling=false" --format "{{.Repository}}:{{.Tag}} {{.CreatedAt}}" | \
+awk '{cmd="date +%s -d \""$2" "$3" "$4"\""; cmd | getline imageTime; close(cmd); currentTime=systime(); if ((currentTime - imageTime) > 31536000) print $1}'
+
+
+2. Cleanup Command (1.5 years)
+
+docker images --filter "dangling=false" --format "{{.Repository}}:{{.Tag}} {{.CreatedAt}}" | \
+awk '{cmd="date +%s -d \""$2" "$3" "$4"\""; cmd | getline imageTime; close(cmd); currentTime=systime(); if ((currentTime - imageTime) > 47260800) print $1}' | \
+xargs -r docker rmi
+
+

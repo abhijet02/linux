@@ -1,0 +1,39 @@
+cd /root/erp-fin/fin/
+
+
+rm -rf addons.tar.gz
+mv /tmp/addons.tar.gz
+
+./deploy
+
+then checck log
+
+tail -f /root/erp-fin/fin/data/sf/var/log/prod-2020-10-13.log
+
+if found any warning then need to give permission below folder :
+
+
+cd /root/erp-fin/fin/data/sf/var/
+chmod 777 -R cache
+
+cd /root/erp-fin/fin/data/worker/
+chmod 777 -R cache
+
+
+docker-compose exec -T  php bin/console app:install
+
+docker-compose exec -T  php bin/console c:c
+
+
+docker exec -it fin_php_1 /bin/sh
+
+
+
+https://erp.brac.net/addons/version
+
+
+deploy
+d@lpo&,./123
+
+roni
+R@0ni/.,asr

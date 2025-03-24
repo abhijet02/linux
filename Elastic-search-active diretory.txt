@@ -1,0 +1,30 @@
+10.42.65.170
+-------------
+cd /root/elastic-ad
+docker ps
+6a24abfec726   docker.elastic.co/kibana/kibana:7.16.2
+c53f8834ab73   docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+
+restart--
+docker-compose down && docker-compose up -d
+
+
+
+****************************************************************
+DC1 & DC2--
+Open PowerShell:
+Press Win + X and select "Windows PowerShell (Admin)" or "Windows Terminal (Admin)".
+
+Verify Service Status--- 
+Get-Service winlogbeat
+
+Start Winlogbeat Service----
+Start-Service winlogbeat
+
+
+Location : C:\Program Files\Winlogbeat
+****************************************************************
+
+
+
+

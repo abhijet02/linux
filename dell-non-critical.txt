@@ -1,0 +1,20 @@
+1. ssh to linux server :
+
+cd /opt/dell/srvadmin/etc/srvadmin-storage/
+vim stsvc.ini
+
+NonDellCertifiedFlag=no
+
+srvadmin-services.sh stop && srvadmin-services.sh start
+
+2. ssh to vmware server :
+/etc/cim/dell/srvadmin/srvadmin-storage
+vi stsvc.ini
+
+NonDellCertifiedFlag=no
+/etc/init.d/sfcbd-watchdog restart
+
+
+
+
+https://toughtechsite.wordpress.com/2017/12/03/the-case-of-non-certified-physical-drives-causing-warnings-in-dell-openmanage-omsa/

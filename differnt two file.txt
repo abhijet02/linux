@@ -1,0 +1,5 @@
+diff -y -W 60  haproxy.cfg_uptime haproxy-2022-10-23_23-30-01.cfg
+
+
+
+https://linuxhint.com/compare-two-files-linux/

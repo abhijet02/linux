@@ -1,0 +1,9 @@
+https://activedirectorypro.com/add-secondary-domain-controller/
+https://www.manageengine.com/products/active-directory-audit/kb/how-to/how-to-add-a-domain-controller-to-an-existing-domain.html#:~:text=On%20the%20Deployment%20configuration%20page,Catalog%20are%20selected%20by%20default.
+https://lazyadmin.nl/it/demote-domain-controller/#:~:text=Sites%20and%20Services%3A-,Open%20the%20Active%20Directory%20Sites%20and%20Services%20from%20the%20start,domain%20controller%20and%20choose%20Delete
+
+---------------------
+
+Remove
+
+https://activedirectorypro.com/demote-domain-controller/

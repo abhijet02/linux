@@ -1,0 +1,25 @@
+[root@docker ~]# docker ps
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED       STATUS                  PORTS                                                                            NAMES
+9766022d5322   goharbor/harbor-jobservice:v2.10.0    "/harbor/entrypoint.…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     harbor-jobservice
+7fb7e650ecd6   goharbor/nginx-photon:v2.10.0         "nginx -g 'daemon of…"   7 weeks ago   Up 7 weeks (healthy)    0.0.0.0:80->8080/tcp, :::80->8080/tcp, 0.0.0.0:443->8443/tcp, :::443->8443/tcp   nginx
+d9060f27399c   goharbor/harbor-core:v2.10.0          "/harbor/entrypoint.…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     harbor-core
+a4bf464ffda1   goharbor/harbor-portal:v2.10.0        "nginx -g 'daemon of…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     harbor-portal
+f4a5b6429609   goharbor/redis-photon:v2.10.0         "redis-server /etc/r…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     redis
+825cced8711b   goharbor/registry-photon:v2.10.0      "/home/harbor/entryp…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     registry
+2898ec0d0d3b   goharbor/harbor-registryctl:v2.10.0   "/home/harbor/start.…"   7 weeks ago   Up 7 weeks (healthy)                                                                                     registryctl
+d0a0dcaf020b   goharbor/harbor-db:v2.10.0            "/docker-entrypoint.…"   7 weeks ago   Up 17 hours (healthy)                                                                                    harbor-db
+e5780a4e75c0   goharbor/harbor-log:v2.10.0           "/bin/sh -c /usr/loc…"   7 weeks ago   Up 7 weeks (healthy)    127.0.0.1:1514->10514/tcp                                                        harbor-log
+[root@docker ~]#
+
+
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+Current Path : 
+
+cd /bits/sbicloud/harbor-2.10.0/
+
+
+
+

@@ -1,0 +1,51 @@
+erp-maintenance
+
+docker ps -a
+
+
+
+docker stop erp-maintenance
+
+docker rm erp-maintenance
+
+
+
+then 
+
+
+docker run --name=erp-maintenance -p 8888:80  --restart unless-stopped -d ronisaha/brac-maintenance-page
+
+-----------------------
+-----------------------
+
+docker run --name=erp-maintenance \
+-p 8888:80 \
+-e CONTENT="Some emergency maintenance work is ongoing at the moment. We will be back by 21th March at 1 AM." \
+-e PAGE_HEADING="We&rsquo;ll be back soon custom" \
+-e PAGE_TITLE="Changed title" \
+-e RETRY_INTERVAL=30000 \
+ronisaha/brac-maintenance-page
+
+----------------------
+----------------------
+
+
+
+
+docker run --name=erp-maintenance \
+-p 8888:80 \
+-e CONTENT="We're performing some maintenance at the moment." \
+--restart unless-stopped -d ronisaha/brac-maintenance-page
+
+-------------------------------------
+
+docker stop erp-maintenance
+
+docker rm erp-maintenance
+
+
+
+docker run --name=erp-maintenance \
+-p 8888:80 \
+-e CONTENT="Some emergency maintenance work is ongoing at the moment. We&rsquo;ll be back by 3 AM." \
+--restart unless-stopped -d ronisaha/brac-maintenance-page
